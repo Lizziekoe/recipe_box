@@ -18,3 +18,20 @@
     <% @categories.each do |category| %>
     <a href="/category/<%= category.id %>"><%= category.name %></a><br>
     <% end %>
+
+<h3>  QUICHE</h3>
+<% @recipes.quiche.each do |recipe| %>
+  <%= recipe.name %><br>
+  <% end %>
+
+<h3>  BEETS</h3>
+<% @recipes.beets.each do |recipe| %>
+<%= recipe.name %><br>
+<%= recipe.ingredients %><br> <br>
+
+<% end %>
+
+<h3>  ASCENDING</h3>
+<% @recipes.order("name ASC").each do |recipe| %>
+  <%= recipe.name %><br>
+  <% end %>

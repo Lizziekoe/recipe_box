@@ -20,10 +20,24 @@
 <h3>Ingredients</h3>
 <%= @recipe.ingredients %><br>
 
+<h3>Categories</h3>
 
 <% @recipe.categories.each do |category| %>
 <%= category.name %>
 <% end %>
+<br><br>
+
+
+<form action="/recipe/<%= @recipe.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="rating">Rate This Recipe</label>
+  <input id="rating" name="rating" type="text">
+  <button type="submit">Rate</button>
+</form>
+
+<ul>
+  <li><%= @recipe.rating %></li>
+</ul>
 
 <form action="/recipe/<%= @recipe.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
@@ -31,7 +45,4 @@
 </form>
 <br>
 
-<form action="/recipe/<%= @recipe.id %>/edit" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <button type="submit">Edit Recipe</button>
-</form>
+<a href="/recipe/<%= @recipe.id %>/edit">Edit This Recipe</a>

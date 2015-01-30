@@ -24,6 +24,14 @@ get('/recipe/:id') do
   erb(:recipe)
 end
 
+patch "/recipe/:id/rating" do
+  rating = params.fetch("rating")
+  @recipe = Recipe.find(params.fetch("id").to_i)
+  @categories = Category.all
+  @recipe.update({:rating => rating})
+  erb(:recipe)
+end
+
 patch "/recipe/:id" do
   ingredients = params.fetch("ingredients")
   instructions = params.fetch("instructions")
